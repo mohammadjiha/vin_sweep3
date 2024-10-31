@@ -10,10 +10,14 @@ import 'buttoncheck.dart';
 class SignInTab extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   final LoginController loginController = Get.put(LoginController());
 
-  SignInTab({super.key});
+  SignInTab({super.key}) {
+    loginController.loadUserCredentials().then((_) {
+      emailController.text = loginController.email ?? '';
+      passwordController.text = loginController.password ?? '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class SignInTab extends StatelessWidget {
             isPassword: false,
           ),
           const SizedBox(height: 16),
-          _buildPasswordField(), 
+          _buildPasswordField(),
           const SizedBox(height: 16),
           _buildRememberMeAndForgotPassword(),
           SizedBox(height: 10.h),
@@ -160,6 +164,16 @@ class SignInTab extends StatelessWidget {
               return Checkbox(
                 value: loginController.isRememberMe.value,
                 onChanged: (value) {
+                  loginController.isRememberMe.value = value!;
+
+                  if (value) {
+                    loginController.saveUserCredentials(
+                      emailController.text,
+                      passwordController.text,
+                    );
+                  } else {
+                    loginController.clearUserCredentials();
+                  }
                 },
               );
             }),

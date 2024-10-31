@@ -151,7 +151,7 @@ class _CheckVinNumberState extends State<CheckVinNumber> {
               automaticallyImplyLeading: false,
               leading: GestureDetector(
                 onTap: () {
-                  Get.toNamed(HomePage.routeName);
+                  Get.back();
                 },
                 child: Image.asset('assets/images/ic-close.png'),
               ),

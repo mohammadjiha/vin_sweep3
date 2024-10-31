@@ -6,12 +6,11 @@ import 'package:sizer/sizer.dart';
 import '../../../constvalue/onboarding_screen/onboarding_color.dart';
 import '../../authentication/screens/sigin&register/widgets/buttoncheck.dart';
 import '../../authentication/screens/sigin&register/widgets/itemtextfeild.dart';
-import '../../home_screen/screen/home.dart';
 import '../../paperInfolderanimation/screen/paperInfolderanimation_screen.dart';
 import '../../scan_vin_number/screen/check_vin_number.dart';
 
-class EnterVinScreen extends StatefulWidget{
-  static const String routName='EnterVinScreen';
+class EnterVinScreen extends StatefulWidget {
+  static const String routName = 'EnterVinScreen';
   const EnterVinScreen({super.key});
 
   @override
@@ -27,13 +26,11 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
 
   void _updateButtonColor() {
     setState(() {
-      valueNotifierColoVinNumber.value =
-      (vinController.text.isNotEmpty)
+      valueNotifierColoVinNumber.value = (vinController.text.isNotEmpty)
           ? ColorOnboarding.pointSelected
           : const Color.fromRGBO(242, 246, 248, 1);
     });
   }
-
 
   @override
   void initState() {
@@ -49,6 +46,7 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
     valueNotifierColoVinNumber.removeListener(_updateButtonColor);
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +87,7 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
                               color: ColorOnboarding.whiteColor)),
                     ),
                     Text(
-                      'Enter the vehicle VIN number, it is a serial number and contains 17 character alphanumeric',
+                      'Enter the vehicle VIN number, it should contain 17 uppercase alphanumeric characters.',
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                               fontSize: 16.sp,
@@ -106,7 +104,7 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
               automaticallyImplyLeading: false,
               leading: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed(HomePage.routeName);
+                  Get.back();
                 },
                 child: Image.asset('assets/images/ic-close.png'),
               ),
@@ -139,19 +137,24 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
                           inputFormatters: [VinNumberFormatter()],
                         ),
                       ),
-
                       SizedBox(height: 45.h),
                       GestureDetector(
                         onTap: () {
-                          Get.to(  const PaperInFolderAnimation());
+                          if (isValidVin(vinController.text)) {
+                            Get.to(const PaperInFolderAnimation());
+                          } else {
+                            showError(
+                                'VIN must be 17 characters long and contain only uppercase letters and numbers.');
+                          }
                         },
                         child: ValueListenableBuilder(
                           valueListenable: valueNotifierColoVinNumber,
-                          builder: (BuildContext context, value, Widget? child) {
+                          builder:
+                              (BuildContext context, value, Widget? child) {
                             return const ButtonCheck(
-                                text: 'Search',
-                                color: ColorOnboarding.pointSelected,
-                                textColor:  ColorOnboarding.whiteColor
+                              text: 'Search',
+                              color: ColorOnboarding.pointSelected,
+                              textColor: ColorOnboarding.whiteColor,
                             );
                           },
                         ),
@@ -164,6 +167,21 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  bool isValidVin(String vin) {
+    return vin.length == 23 && RegExp(r'^[A-Z0-9]+$').hasMatch(vin);
+  }
+
+  void showError(String message) {
+    Get.snackbar(
+      'Error',
+      message,
+      backgroundColor: Colors.redAccent,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.TOP,
+      duration: const Duration(seconds: 3),
     );
   }
 }

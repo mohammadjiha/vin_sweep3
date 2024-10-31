@@ -31,51 +31,50 @@ class Navbar01Widget extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 3,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed(SearchHistoryPage.routName); // Navigate to HomePage
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/Ic-Home.png'),
-                         Text(
-                          'Home',
-                          style: TextStyle(
-                            fontFamily: 'Lato',
-                            color: Colors.white,
-                            fontSize: 15.sp,
-                          ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            Get.toNamed(SearchHistoryPage.routName);
+                          },
+                          child: Image.asset('assets/images/Ic-Home.png')),
+                      Text(
+                        'Home',
+                        style: TextStyle(
+                          fontFamily: 'Lato',
+                          color: Colors.white,
+                          fontSize: 15.sp,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 const Spacer(flex: 2),
                 Expanded(
                   flex: 3,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(Menu.routName); // Navigate to Menu
-                    },
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/images/ic-menu23.png'),
-                           Text(
-                            'Menu',
-                            style: TextStyle(
-                              fontFamily: 'Lato',
-                              color: Colors.white,
-                              fontSize: 15.sp,
-                            ),
-                          ),
-                        ],
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(Menu.routName);
+                          },
+                          child: Image.asset(
+                            'assets/images/ic-menu23.png',
+                            fit: BoxFit.cover,
+                          )),
+                      Text(
+                        'Menu',
+                        style: TextStyle(
+                          fontFamily: 'Lato',
+                          color: Colors.white,
+                          fontSize: 15.sp,
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ].divide(const SizedBox(width: 8)),

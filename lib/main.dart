@@ -15,7 +15,6 @@ import 'package:vin_sweep/features/onboarding/screens/pagview.dart';
 import 'package:vin_sweep/features/paperInfolderanimation/screen/paperInfolderanimation_screen.dart';
 import 'package:vin_sweep/features/profile/screens/profile_screen.dart';
 import 'package:vin_sweep/features/scan_vin_number/screen/check_vin_number.dart';
-import 'package:vin_sweep/features/test/test.dart';
 
 import 'features/authentication/screens/changepasswoed/screen/changepassword_screen.dart';
 import 'features/authentication/screens/forgot/screen/forgotscreen.dart';
@@ -37,7 +36,7 @@ class VinSweep extends StatelessWidget {
           title: 'Vin Sweep',
           routes: {
             '/': (context) => const PageViewScreen(),
-            HomePage.routeName:(context)=> HomePage(),
+            HomePage.routeName:(context)=> const HomePage(),
             SignInScreen.routName: (context) => const SignInScreen(),
             ForgotScreen.routName:(context)=>const ForgotScreen(),
             ChangePasswordScreen.routName:(context)=> const ChangePasswordScreen(),
@@ -48,7 +47,7 @@ class VinSweep extends StatelessWidget {
             ChanngePasswordNew.routName:(context)=>const ChanngePasswordNew(),
             CarPlateRecognition.routName:(context)=> const CarPlateRecognition(),
             EnterVinScreen.routName:(context)=>const  EnterVinScreen(),
-            SearchHistoryPage.routName:(context)=>SearchHistoryPage(),
+            SearchHistoryPage.routName:(context)=>const SearchHistoryPage(),
             PaperInFolderAnimation.routName:(context)=>const PaperInFolderAnimation(),
             LoadingScreenAnimation.routName:(context)=>const LoadingScreenAnimation(),
             EnterVinNumberScreen.routName:(context)=>const EnterVinNumberScreen(),
