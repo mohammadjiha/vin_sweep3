@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:sizer/sizer.dart';
+import 'package:vin_sweep/features/authentication/screens/sigin&register/screen/sigin_screen.dart';
 
 import '../../../../../constvalue/onboarding_screen/onboarding_color.dart';
 import '../../sigin&register/widgets/buttoncheck.dart';
@@ -21,7 +23,7 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
   final ValueNotifier<Color> valueNotifierColor =
-  ValueNotifier(const Color.fromRGBO(242, 246, 248, 1));
+      ValueNotifier(const Color.fromRGBO(242, 246, 248, 1));
 
   OtpFieldController otpController = OtpFieldController();
   String otpValue = "";
@@ -198,17 +200,28 @@ class _OtpScreenState extends State<OtpScreen> {
                           SizedBox(height: 37.h),
                           ValueListenableBuilder(
                             valueListenable: valueNotifierColor,
-                            builder: (BuildContext context, value, Widget? child) {
-                              return ButtonCheck(
-                                text: 'Submit',
-                                color: value,
-                                textColor: value == ColorOnboarding.pointSelected
-                                    ? ColorOnboarding.whiteColor
-                                    : ColorOnboarding.subTextColor,
+                            builder:
+                                (BuildContext context, value, Widget? child) {
+                              return GestureDetector(
+                                onTap: value == ColorOnboarding.pointSelected
+                                    ? () {
+                                        _showCustomDialog(context);
+                                      }
+                                    : null,
+                                child: ButtonCheck(
+                                  text: 'Submit',
+                                  color: value,
+                                  textColor:
+                                      value == ColorOnboarding.pointSelected
+                                          ? ColorOnboarding.whiteColor
+                                          : ColorOnboarding.subTextColor,
+                                ),
                               );
                             },
                           ),
-                          SizedBox(height: 3.h,),
+                          SizedBox(
+                            height: 3.h,
+                          ),
                           Text(
                             '© 2024 VINsweep. All Rights Reserved.',
                             style: GoogleFonts.openSans(
@@ -229,4 +242,46 @@ class _OtpScreenState extends State<OtpScreen> {
       ),
     );
   }
+}
+
+void _showCustomDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        content: GestureDetector(
+          onTap: (){  Navigator.of(context).pushReplacementNamed(SignInScreen.routName);},
+          child: SizedBox(
+            height: 38.h,
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: (){  Navigator.of(context).pushReplacementNamed(SignInScreen.routName);
+                    },
+                  child: const Align(alignment: Alignment.bottomRight,
+                  child: Icon(Icons.close),
+                  ),
+                ),
+                Lottie.asset(
+                    'assets/animations/Animation - 1724759483512 (1).json'),
+                 Text(
+                  'Success Message',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                      color: const Color.fromRGBO(61, 193, 121, 1),
+                      fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  'Success description text here',
+                  style: TextStyle(
+                      color: ColorOnboarding.subTextColor,
+                      fontWeight: FontWeight.normal),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
 }

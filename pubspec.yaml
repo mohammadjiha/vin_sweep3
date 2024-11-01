@@ -52,6 +52,8 @@ dependencies:
   lottie: ^3.1.3
   buttons_tabbar: ^1.3.13
   shared_preferences: ^2.3.2
+  http:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,6 +83,7 @@ flutter:
      - assets/images/
      - assets/animations/fZKpPlN2ff.json
      - assets/animations/xZ2YiXjgHi.json
+     - assets/animations/Animation - 1724759483512 (1).json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -85,10 +85,10 @@ class SearchHistoryPage extends StatefulWidget {
 
   const SearchHistoryPage({super.key});
   @override
-  _SearchHistoryPageState createState() => _SearchHistoryPageState();
+  SearchHistoryPageState createState() => SearchHistoryPageState();
 }
 
-class _SearchHistoryPageState extends State<SearchHistoryPage> {
+class SearchHistoryPageState extends State<SearchHistoryPage> {
   Future<SearchHistoryApi> fetchSearchHistory() async {
     final response = await http.get(
         Uri.parse(
@@ -99,9 +99,6 @@ class _SearchHistoryPageState extends State<SearchHistoryPage> {
           'Authorization': 'Bearer ${CurrentSession().getAccessToken()}'
         }
     );
-
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
       return SearchHistoryApi.fromRawJson(response.body);

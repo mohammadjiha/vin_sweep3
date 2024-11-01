@@ -15,10 +15,10 @@ class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController fullNameControllerPrpfile = TextEditingController();
   final TextEditingController emailControllerPrpfile = TextEditingController();
@@ -232,7 +232,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
 
     final fullName = fullNameControllerPrpfile.text;
-    final email = emailControllerPrpfile.text;
     final zipCode = zipCodeConControllerProfile.text;
 
     try {

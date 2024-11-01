@@ -9,7 +9,7 @@ import 'package:vin_sweep/features/menu/widget/contenerwidget.dart';
 import 'package:vin_sweep/features/profile/screens/profile_screen.dart';
 
 import '../../../constvalue/onboarding_screen/onboarding_color.dart';
-import '../../authentication/screens/sigin&register/screen/signin_screen.dart';
+import '../../authentication/screens/sigin&register/screen/sigin_screen.dart';
 
 class Menu extends StatelessWidget {
   static const String routName = 'Menu';

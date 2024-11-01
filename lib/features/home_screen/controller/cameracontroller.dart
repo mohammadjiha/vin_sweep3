@@ -70,12 +70,13 @@ class CarPlateRecognitionState extends State<CarPlateRecognition> {
 
       if (matches.isNotEmpty) {
         vinNumber = matches.first.group(0)!;
+        if(mounted){
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => CheckVinNumber(vinNumber: vinNumber), // Pass VIN here
           ),
         );
-      } else {
+      } }else {
         vinNumber = "VIN not found";
       }
 

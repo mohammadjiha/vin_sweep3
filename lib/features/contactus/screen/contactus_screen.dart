@@ -41,13 +41,16 @@ class ContactusScreenState extends State<ContactusScreen> {
         throw 'Could not launch $url';
       }
       await Clipboard.setData(ClipboardData(text: phoneNumber));
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Phone number has been copied to clipboard'),
-      ));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Phone number has been copied to clipboard'),
+        ));
+      }
     } catch (e) {
-      print("Error launching phone call: $e");
+      _showErrorDialog("Error launching phone call: $e");
     }
   }
+
   Future<void> _openEmailApp() async {
     final url = Uri.parse('mailto:$email');
     try {
@@ -56,15 +59,17 @@ class ContactusScreenState extends State<ContactusScreen> {
       } else {
         throw 'Could not launch $url';
       }
-
       await Clipboard.setData(ClipboardData(text: email));
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Email has been copied to clipboard'),
-      ));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Email has been copied to clipboard'),
+        ));
+      }
     } catch (e) {
-      print("Error launching email: $e");
+      _showErrorDialog("Error launching email: $e");
     }
   }
+
   Future<void> _openInstagram() async {
     final url = Uri.parse(instagramUrl);
     try {
@@ -73,15 +78,17 @@ class ContactusScreenState extends State<ContactusScreen> {
       } else {
         throw 'Could not launch $url';
       }
-
       await Clipboard.setData(ClipboardData(text: instagramUrl));
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Instagram link has been copied to clipboard'),
-      ));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Instagram link has been copied to clipboard'),
+        ));
+      }
     } catch (e) {
-      print("Error launching Instagram: $e");
+      _showErrorDialog("Error launching Instagram: $e");
     }
   }
+
   Future<void> _openFacebook() async {
     final url = Uri.parse(facebookUrl);
     try {
@@ -90,13 +97,14 @@ class ContactusScreenState extends State<ContactusScreen> {
       } else {
         throw 'Could not launch $url';
       }
-
       await Clipboard.setData(ClipboardData(text: facebookUrl));
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Facebo ok link has been copied to clipboard'),
-      ));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Facebook link has been copied to clipboard'),
+        ));
+      }
     } catch (e) {
-      print("Error launching Facebook: $e");
+      _showErrorDialog("Error launching Facebook: $e");
     }
   }
 
@@ -231,4 +239,25 @@ class ContactusScreenState extends State<ContactusScreen> {
       ),
     );
   }
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Error"),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 }
+

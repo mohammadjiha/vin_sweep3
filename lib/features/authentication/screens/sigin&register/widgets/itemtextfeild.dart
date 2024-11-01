@@ -28,10 +28,10 @@ class ItemTextFeild extends StatefulWidget {
   final TextInputAction textInputAction;
 
   @override
-  _ItemTextFeildState createState() => _ItemTextFeildState();
+  ItemTextFeildState createState() => ItemTextFeildState();
 }
 
-class _ItemTextFeildState extends State<ItemTextFeild> {
+class ItemTextFeildState extends State<ItemTextFeild> {
   late bool _obscureText;
 
   @override

@@ -2,56 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter/services.dart';
-import 'package:vin_sweep/features/home_screen/screen/home.dart';
 
 import '../../../constvalue/onboarding_screen/onboarding_color.dart';
 import '../../authentication/screens/sigin&register/widgets/buttoncheck.dart';
 import '../../authentication/screens/sigin&register/widgets/itemtextfeild.dart';
-import '../../paperInfolderanimation/screen/paperInfolderanimation_screen.dart';
+import '../../paperInfolderanimation/screen/paperInformatization_screen.dart';
 
-class VinNumberFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    String digitsOnly = newValue.text.replaceAll(RegExp(r'[^0-9A-Z]'), '');
-    StringBuffer formatted = StringBuffer();
-
-
-    if (digitsOnly.length > 0) {
-      formatted.write(digitsOnly.substring(0, 3)); // XXX
-    }
-    if (digitsOnly.length > 3) {
-      formatted.write('-');
-      formatted.write(digitsOnly.substring(3, 8)); // XXXXX
-    }
-    if (digitsOnly.length > 8) {
-      formatted.write('-');
-      formatted.write(digitsOnly.substring(8, 9)); // X
-    }
-    if (digitsOnly.length > 9) {
-      formatted.write('-');
-      formatted.write(digitsOnly.substring(9, 10)); // X
-    }
-    if (digitsOnly.length > 10) {
-      formatted.write('-');
-      formatted.write(digitsOnly.substring(10, 11)); // X
-    }
-    if (digitsOnly.length > 11) {
-      formatted.write('-');
-      formatted.write(digitsOnly.substring(11, 13)); // XX
-    }
-    if (digitsOnly.length > 13) {
-      formatted.write('-');
-      formatted.write(digitsOnly.substring(13, 17)); // XXXX
-    }
-
-    return TextEditingValue(
-      text: formatted.toString(),
-      selection: TextSelection.collapsed(offset: formatted.length),
-    );
-  }
-}
+// class VinNumberFormatter extends TextInputFormatter {
+//   @override
+//   TextEditingValue formatEditUpdate(
+//       TextEditingValue oldValue, TextEditingValue newValue) {
+//     // String digitsOnly = newValue.text.replaceAll(RegExp(r'[^0-9A-Z]'), '');
+//     StringBuffer formatted = StringBuffer();
+//
+//
+//     // if (digitsOnly.length > 0) {
+//     //   formatted.write(digitsOnly.substring(0, 3)); // XXX
+//     // }
+//     // if (digitsOnly.length > 3) {
+//     //   formatted.write('-');
+//     //   formatted.write(digitsOnly.substring(3, 8)); // XXXXX
+//     // }
+//     // if (digitsOnly.length > 8) {
+//     //   formatted.write('-');
+//     //   formatted.write(digitsOnly.substring(8, 9)); // X
+//     // }
+//     // if (digitsOnly.length > 9) {
+//     //   formatted.write('-');
+//     //   formatted.write(digitsOnly.substring(9, 10)); // X
+//     // }
+//     // if (digitsOnly.length > 10) {
+//     //   formatted.write('-');
+//     //   formatted.write(digitsOnly.substring(10, 11)); // X
+//     // }
+//     // if (digitsOnly.length > 11) {
+//     //   formatted.write('-');
+//     //   formatted.write(digitsOnly.substring(11, 13)); // XX
+//     // }
+//     // if (digitsOnly.length > 13) {
+//     //   formatted.write('-');
+//     //   formatted.write(digitsOnly.substring(13, 17)); // XXXX
+//     // }
+//
+//     return TextEditingValue(
+//       text: formatted.toString(),
+//       selection: TextSelection.collapsed(offset: formatted.length),
+//     );
+//   }
+// }
 
 class CheckVinNumber extends StatefulWidget {
   static const String routName = 'CheckVinNumber';
@@ -181,7 +179,7 @@ class _CheckVinNumberState extends State<CheckVinNumber> {
                           isobscureText: false,
                           focusNode: vinFocusNodeForgot,
                           textEditingController: vinController,
-                          inputFormatters: [VinNumberFormatter()],
+                          // inputFormatters: [VinNumberFormatter()],
                         ),
                       ),
                       SizedBox(height: 5.h),

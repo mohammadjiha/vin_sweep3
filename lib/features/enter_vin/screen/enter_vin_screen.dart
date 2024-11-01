@@ -6,8 +6,7 @@ import 'package:sizer/sizer.dart';
 import '../../../constvalue/onboarding_screen/onboarding_color.dart';
 import '../../authentication/screens/sigin&register/widgets/buttoncheck.dart';
 import '../../authentication/screens/sigin&register/widgets/itemtextfeild.dart';
-import '../../paperInfolderanimation/screen/paperInfolderanimation_screen.dart';
-import '../../scan_vin_number/screen/check_vin_number.dart';
+import '../../paperInfolderanimation/screen/paperInformatization_screen.dart';
 
 class EnterVinScreen extends StatefulWidget {
   static const String routName = 'EnterVinScreen';
@@ -134,7 +133,7 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
                           isobscureText: false,
                           focusNode: vinFocusNodeForgot,
                           textEditingController: vinController,
-                          inputFormatters: [VinNumberFormatter()],
+                          // inputFormatters: [VinNumberFormatter()],
                         ),
                       ),
                       SizedBox(height: 45.h),
@@ -171,7 +170,7 @@ class _EnterVinScreenState extends State<EnterVinScreen> {
   }
 
   bool isValidVin(String vin) {
-    return vin.length == 23 && RegExp(r'^[A-Z0-9]+$').hasMatch(vin);
+    return vin.length == 17 && RegExp(r'^[A-Z0-9]+$').hasMatch(vin);
   }
 
   void showError(String message) {

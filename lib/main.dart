@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_types_as_parameter_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:sizer/sizer.dart';
@@ -12,13 +14,13 @@ import 'package:vin_sweep/features/home_screen/screen/home.dart';
 import 'package:vin_sweep/features/loading/screen/loading_screen.dart';
 import 'package:vin_sweep/features/menu/screen/menu_screen.dart';
 import 'package:vin_sweep/features/onboarding/screens/pagview.dart';
-import 'package:vin_sweep/features/paperInfolderanimation/screen/paperInfolderanimation_screen.dart';
+import 'package:vin_sweep/features/paperInfolderanimation/screen/paperInformatization_screen.dart';
 import 'package:vin_sweep/features/profile/screens/profile_screen.dart';
 import 'package:vin_sweep/features/scan_vin_number/screen/check_vin_number.dart';
 
 import 'features/authentication/screens/changepasswoed/screen/changepassword_screen.dart';
 import 'features/authentication/screens/forgot/screen/forgotscreen.dart';
-import 'features/authentication/screens/sigin&register/screen/signin_screen.dart';
+import 'features/authentication/screens/sigin&register/screen/sigin_screen.dart';
 import 'features/test/screen.dart';
 
 void main() {
@@ -30,6 +32,7 @@ class VinSweep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(
+      // ignore: non_constant_identifier_names
       builder: (BuildContext, Orientation, ScreenType) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,

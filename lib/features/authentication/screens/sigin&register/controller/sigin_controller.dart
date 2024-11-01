@@ -13,6 +13,7 @@ class LoginController extends GetxController {
   String? email;
   String? password;
 
+ // SharedPreferences
   Future<void> loadUserCredentials() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
@@ -38,7 +39,7 @@ class LoginController extends GetxController {
     }
 
     isLoading(true);
-
+ //Api Sigin
     try {
       var response = await http.post(
         Uri.parse('http://212.47.65.193:8888/api/v1/auth/login'),
@@ -48,9 +49,6 @@ class LoginController extends GetxController {
           'Content-Type': 'application/json'
         },
       );
-
-      print(response.body);
-
       if (response.statusCode == 200) {
         LoginResponse loginResponse = LoginResponse.fromRawJson(response.body);
 
@@ -82,7 +80,7 @@ class LoginController extends GetxController {
       isLoading(false);
     }
   }
-
+//handleError
   void _handleError(int statusCode) {
     switch (statusCode) {
       case 401:
@@ -104,7 +102,7 @@ class LoginController extends GetxController {
         _showError("Login failed. Please try again.");
     }
   }
-
+//NetworkError
   void _handleNetworkError(dynamic error) {
     if (error.toString().contains('SocketException')) {
       _showError("Network error. Please check your internet connection.");

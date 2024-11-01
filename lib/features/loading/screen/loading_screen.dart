@@ -28,11 +28,12 @@ class LoadingScreenAnimationState extends State<LoadingScreenAnimation> with Sin
 
   void _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(
-        HomePage.routeName,
-        arguments: userData,
-      );
-    });
+      if(mounted) {
+        Navigator.of(context).pushReplacementNamed(
+          HomePage.routeName,
+          arguments: userData,
+        );
+      } });
   }
 
   @override
