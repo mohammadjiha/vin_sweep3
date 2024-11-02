@@ -7,7 +7,8 @@ import '../../../constvalue/onboarding_screen/onboarding_color.dart';
 
 class GeneralInfo extends StatelessWidget {
    final String generalInfo;
-  const GeneralInfo({super.key, required this.generalInfo});
+   final String dataInfo;
+   const GeneralInfo({super.key, required this.generalInfo ,  this.dataInfo=''});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,7 +17,7 @@ class GeneralInfo extends StatelessWidget {
         Align(
           alignment: Alignment.topLeft,
           child: Text(
-            generalInfo, // هنا يتم استخدام العنوان الممرر أو الافتراضي
+            generalInfo,
             style: GoogleFonts.openSans(
               textStyle: TextStyle(
                 fontSize: 16.sp,
@@ -30,13 +31,15 @@ class GeneralInfo extends StatelessWidget {
           height: 1.h,
         ),
         Container(
+          padding: EdgeInsets.only(left: 5.w),
+          alignment: Alignment.centerLeft,
           height: 6.h,
           width: 100.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             color: const Color.fromRGBO(233, 241, 245, 1),
           ),
-          child: const SizedBox(),
+          child: Text(dataInfo,style: TextStyle(fontWeight: FontWeight.normal,fontSize: 16.sp),),
         ),
       ],
     );

@@ -73,7 +73,7 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.only(left: 5.w, top: 13.h),
+                padding: EdgeInsets.only(left: 5.w, top: 15.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -81,7 +81,7 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
                       '2008 Mercedes C-Class',
                       style: GoogleFonts.openSans(
                         textStyle: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize: 19.sp,
                           fontWeight: FontWeight.bold,
                           color: ColorOnboarding.whiteColor,
                         ),
@@ -110,6 +110,14 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
                 },
                 child: Image.asset('assets/images/ic-close.png'),
               ),
+              title:  Text(
+                '4Y1-SL658-4-8-Z-41-1439',
+                style: TextStyle(
+                  fontSize: 17.sp,
+                    color: ColorOnboarding.whiteColor,
+                    fontWeight: FontWeight.bold),
+              ),
+              centerTitle: true,
             ),
             Positioned(
               left: 0,
@@ -148,7 +156,8 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
                         contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
                         height: 6.h,
                         backgroundColor: ColorOnboarding.pointSelected,
-                        unselectedBackgroundColor: ColorOnboarding.pointUnselected,
+                        unselectedBackgroundColor:
+                            ColorOnboarding.pointUnselected,
                         labelStyle: TextStyle(
                           fontSize: 16.sp,
                           color: Colors.white,
@@ -162,11 +171,11 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
                         radius: 25,
                         tabs: const [
                           Tab(
-                          text: 'General Info',
+                            text: 'General Info',
                           ),
                           Tab(
                             text: 'Engine',
-                            ),
+                          ),
                           Tab(
                             text: 'Mechanical / Battery',
                           ),
@@ -236,19 +245,19 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
             ),
             SizedBox(height: 1.h),
             const Divider(color: Color.fromRGBO(233, 241, 245, 1)),
-            const GeneralInfo(generalInfo: 'Destination Market'),
-            const GeneralInfo(generalInfo: 'Make'),
-            const GeneralInfo(generalInfo: 'Manufacturer Name'),
-            const GeneralInfo(generalInfo: 'Model'),
-            const GeneralInfo(generalInfo: 'Model Year'),
-            const GeneralInfo(generalInfo: 'Plant City'),
-            const GeneralInfo(generalInfo: 'Plant Company Name'),
-            const GeneralInfo(generalInfo: 'Plant State'),
-            const GeneralInfo(generalInfo: 'Series'),
-            const GeneralInfo(generalInfo: 'Series 2'),
-            const GeneralInfo(generalInfo: 'Trim'),
-            const GeneralInfo(generalInfo: 'Trim 2'),
-            const GeneralInfo(generalInfo: 'Vehicle Type'),
+            const GeneralInfo(generalInfo: 'Destination Market',dataInfo: 'Europe',),
+            const GeneralInfo(generalInfo: 'Make',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Manufacturer Name',dataInfo: 'Mercedes Benz',),
+            const GeneralInfo(generalInfo: 'Model',dataInfo: 'C-Class',),
+            const GeneralInfo(generalInfo: 'Model Year',dataInfo: '2008',),
+            const GeneralInfo(generalInfo: 'Plant City',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Plant Company Name',dataInfo: 'Information not available',),
+            const GeneralInfo(generalInfo: 'Plant State',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Series',dataInfo: 'Value'),
+            const GeneralInfo(generalInfo: 'Series 2',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Trim',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Trim 2',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Vehicle Type',dataInfo: 'Value',),
           ],
         ),
       ),
@@ -284,59 +293,121 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
             ),
             SizedBox(height: 1.h),
             const Divider(color: Color.fromRGBO(233, 241, 245, 1)),
-            const GeneralInfo(generalInfo: 'Cooling Type'),
-            const GeneralInfo(generalInfo: 'Displacement (CC)'),
-            const GeneralInfo(generalInfo: 'Displacement (CI)'),
-            const GeneralInfo(generalInfo: 'Displacement (L)'),
-            const GeneralInfo(generalInfo: 'Electrification Level'),
-            const GeneralInfo(generalInfo: 'Engine Configuration'),
-            const GeneralInfo(generalInfo: 'Engine Brake (hp) From'),
-            const GeneralInfo(generalInfo: 'Engine Brake (hp) To'),
-            const GeneralInfo(generalInfo: 'Engine Manufacturer'),
-            const GeneralInfo(generalInfo: 'Engine Model'),
-            const GeneralInfo(generalInfo: 'Fuel Delivery / Fuel Injection Type'),
-            const GeneralInfo(generalInfo: 'Engine Power (kW)'),
-            const GeneralInfo(generalInfo: 'Fuel Type - Primary'),
-            const GeneralInfo(generalInfo: 'Fuel Type - Secondary'),
-            const GeneralInfo(generalInfo: 'Top Speed (MPH)'),
-            const GeneralInfo(generalInfo: 'Turbo'),
-            const GeneralInfo(generalInfo: 'Valve Train Design'),
-            SizedBox(height: 3.h,),
-            const Ohter(imageName: 'Mechanical - Battery.png', titele: 'Mechanical / Battery'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Transmission.png', titele: 'Mechanical / Transmission'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Mechanical - Battery.png', titele: 'Interior / Seat'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Interior - Seat.png', titele: 'Interior / Seat'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Exterior - Body.png', titele: 'Exterior / Body'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Exterior - Dimension.png', titele: 'Exterior / Dimension'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Wheel.png', titele: 'Exterior / Wheel tire'),
-            SizedBox(height: 2.h,),
+            const GeneralInfo(generalInfo: 'Cooling Type',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Displacement (CC)',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Displacement (CI)',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Displacement (L)',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Electrification Level',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Engine Configuration',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Engine Brake (hp) From',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Engine Brake (hp) To',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Engine Manufacturer',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Engine Model',dataInfo: 'Value',),
+            const GeneralInfo(
+                generalInfo: 'Fuel Delivery / Fuel Injection Type',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Engine Power (kW)',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Fuel Type - Primary',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Fuel Type - Secondary',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Top Speed (MPH)',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Turbo',dataInfo: 'Value',),
+            const GeneralInfo(generalInfo: 'Valve Train Design',dataInfo: 'Value',),
+            SizedBox(
+              height: 3.h,
+            ),
+            const Ohter(
+                imageName: 'Mechanical - Battery.png',
+                titele: 'Mechanical / Battery'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Transmission.png',
+                titele: 'Mechanical / Transmission'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Mechanical - Battery.png',
+                titele: 'Interior / Seat'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Interior - Seat.png', titele: 'Interior / Seat'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Exterior - Body.png', titele: 'Exterior / Body'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Exterior - Dimension.png',
+                titele: 'Exterior / Dimension'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Wheel.png', titele: 'Exterior / Wheel tire'),
+            SizedBox(
+              height: 2.h,
+            ),
             const Ohter(imageName: 'Brake.png', titele: 'Mechanical / Brake'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Mechanical - Battery.png', titele: 'Mechanical / Battery / Charger'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Passive Safety System.png', titele: 'Passive Safety System / Air Bag Location'),
-            SizedBox(height: 2.h,),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Mechanical - Battery.png',
+                titele: 'Mechanical / Battery / Charger'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Passive Safety System.png',
+                titele: 'Passive Safety System / Air Bag Location'),
+            SizedBox(
+              height: 2.h,
+            ),
             const Ohter(imageName: 'Interior.png', titele: 'Interior'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Active Safety - Safe Distance.png', titele: 'Active Safety System / Maintaining '),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Active Safety.png', titele: 'Mechanical / Battery'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Mechanical - Battery.png', titele: 'Mechanical / Battery'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Lighting Technology.png', titele: 'AActive Safety System / Lane '),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Lane & Side Assist.png', titele: 'Mechanical / Battery'),
-            SizedBox(height: 2.h,),
-            const Ohter(imageName: 'Passive Safety System.png', titele: 'Passive Safety System'),
-            SizedBox(height: 10.h,),
-
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Active Safety - Safe Distance.png',
+                titele: 'Active Safety System / Maintaining '),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Active Safety.png', titele: 'Mechanical / Battery'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Mechanical - Battery.png',
+                titele: 'Mechanical / Battery'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Lighting Technology.png',
+                titele: 'AActive Safety System / Lane '),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Lane & Side Assist.png',
+                titele: 'Mechanical / Battery'),
+            SizedBox(
+              height: 2.h,
+            ),
+            const Ohter(
+                imageName: 'Passive Safety System.png',
+                titele: 'Passive Safety System'),
+            SizedBox(
+              height: 10.h,
+            ),
           ],
         ),
       ),
@@ -372,7 +443,10 @@ class EnterVinNumberScreenState extends State<EnterVinNumberScreen>
             ),
             SizedBox(height: 1.h),
             const Divider(color: Color.fromRGBO(233, 241, 245, 1)),
-            const Ohter(imageName: 'Mechanical - Battery.png', titele: 'Mechanical / Battery'),],
+            const Ohter(
+                imageName: 'Mechanical - Battery.png',
+                titele: 'Mechanical / Battery'),
+          ],
         ),
       ),
     );
