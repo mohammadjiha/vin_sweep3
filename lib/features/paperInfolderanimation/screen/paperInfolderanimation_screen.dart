@@ -1,3 +1,6 @@
+
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -23,8 +26,10 @@ class PaperInFolderAnimationState extends State<PaperInFolderAnimation> with Sin
 
   void _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(EnterVinNumberScreen.routName);
-    });
+      if(mounted) {
+        Navigator.of(context).pushReplacementNamed(
+            EnterVinNumberScreen.routName);
+      }});
   }
 
   @override

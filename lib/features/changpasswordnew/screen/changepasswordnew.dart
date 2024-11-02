@@ -84,7 +84,7 @@ class _ChanngePasswordNewState extends State<ChanngePasswordNew> {
                 children: [
                   SizedBox(height: 15.h),
                   Text(
-                    'Profile',
+                    'Change Password',
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
                             fontSize: 20.sp,
@@ -93,7 +93,7 @@ class _ChanngePasswordNewState extends State<ChanngePasswordNew> {
                   ),
                   SizedBox(height: 1.h),
                   Text(
-                    'You can only edit your name and ZIP code',
+                    'Please enter your current password and new password',
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
                             fontSize: 16.sp,
@@ -115,7 +115,7 @@ class _ChanngePasswordNewState extends State<ChanngePasswordNew> {
                 child: Image.asset('assets/images/ic-back.png')),
           ),
           Positioned(
-            top: 25.h,
+            top: 26.h,
             left: 0,
             right: 0,
             child: Container(

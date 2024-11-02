@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:vin_sweep/features/home_screen/screen/home.dart';
 import 'package:vin_sweep/http_wrapper/current_session.dart';
 import '../../../constvalue/onboarding_screen/onboarding_color.dart';
 import '../../authentication/screens/sigin&register/widgets/buttoncheck.dart';
@@ -29,15 +30,21 @@ class ProfileScreenState extends State<ProfileScreen> {
   final ValueNotifier<Color> valueNotifierColorProfile = ValueNotifier(const Color.fromRGBO(242, 246, 248, 1));
   bool _isLoading = false;
 
+  String? originalFullName;
+  String? originalZipCode;
+
   @override
   void initState() {
     super.initState();
 
     var user = CurrentSession().getApiUser();
     if (user != null) {
-      fullNameControllerPrpfile.text = user.user!.fullName ?? '';
+      originalFullName = user.user!.fullName;
+      originalZipCode = user.user!.zipCode?.toString();
+
+      fullNameControllerPrpfile.text = originalFullName ?? '';
       emailControllerPrpfile.text = user.user!.email ?? '';
-      zipCodeConControllerProfile.text = user.user!.zipCode?.toString() ?? ''; // التأكد من تعيين الرمز البريدي بشكل صحيح
+      zipCodeConControllerProfile.text = originalZipCode ?? '';
     }
 
     fullNameControllerPrpfile.addListener(_updateButtonColor);
@@ -176,8 +183,10 @@ class ProfileScreenState extends State<ProfileScreen> {
                       GestureDetector(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            if (_validateFields()) {
+                            if (_hasDataChanged() && _validateFields()) {
                               _profileApi();
+                            } else if (!_hasDataChanged()) {
+                              _showError("No changes made to save.");
                             }
                           }
                         },
@@ -205,6 +214,11 @@ class ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
     );
+  }
+
+  bool _hasDataChanged() {
+    return fullNameControllerPrpfile.text != originalFullName ||
+        zipCodeConControllerProfile.text != originalZipCode;
   }
 
   bool _validateFields() {
@@ -262,6 +276,8 @@ class ProfileScreenState extends State<ProfileScreen> {
           CurrentSession().setApiUser(user);
         }
 
+        Get.offAllNamed(HomePage.routeName);
+
       } else {
         String errorMessage = jsonDecode(response.body)['message'] ?? 'Failed to update profile';
         Get.snackbar(
@@ -281,7 +297,6 @@ class ProfileScreenState extends State<ProfileScreen> {
     } finally {
       setState(() {
         _isLoading = false;
-
       });
     }
   }
