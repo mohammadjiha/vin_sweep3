@@ -50,6 +50,10 @@ VIN Sweep is a powerful Flutter app that allows users to retrieve comprehensive 
 
 ## Getting Started
 
+## Download APK
+- [Click here to download the APK](https://drive.google.com/uc?export=download&id=17087o0xmaHpRUAjulTTiPxWG8wB_HRFG)
+
+
 ### Prerequisites
 
 - **Flutter SDK**: Ensure Flutter SDK is installed on your machine.
