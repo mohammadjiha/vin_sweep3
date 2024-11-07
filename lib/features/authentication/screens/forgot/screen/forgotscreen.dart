@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:vin_sweep/features/authentication/screens/changepasswoed/screen/changepassword_screen.dart';
 import '../../../../../constvalue/onboarding_screen/onboarding_color.dart';
+import '../../../../onboarding/widgets/button.dart';
 import '../../sigin&register/widgets/buttoncheck.dart';
 import '../../sigin&register/widgets/itemtextfeild.dart';
 
@@ -142,6 +143,7 @@ class ForgotScreenState extends State<ForgotScreen> {
                           if (_formKey.currentState!.validate() && _validateEmail(emailControllerForgot.text) ) {
                             Navigator.of(context)
                                 .pushNamed(ChangePasswordScreen.routName);
+                            showDialog(context: context, builder: (_) => showDailog());
                           } else {
                             _showSnackbar("Invalid Input",
                                 "Please correct the errors in the form.");
@@ -189,4 +191,74 @@ class ForgotScreenState extends State<ForgotScreen> {
       duration: const Duration(seconds: 3),
     );
   }
+}
+AlertDialog showDailog() {
+  return AlertDialog(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    content: SizedBox(
+      height: 50.h,
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ),
+          Image.asset(
+            'assets/images/checkurmail.png',
+            height: 20.h,
+          ),
+          SizedBox(height: 2.h),
+          Text(
+            "Please Check your Email",
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 1.h),
+          Text(
+            "An email with a new password has been sent to you, "
+                "please check the junk folder if you didn't find it in the inbox.",
+            style: TextStyle(
+              fontSize: 14.sp,
+              color: Colors.grey[600],
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const Spacer(),
+          GestureDetector(
+            onTap: () {
+              Get.back(); // Close the dialog when tapped
+            },
+            child: const Button(
+              text: 'Done',
+              colorContainer: ColorOnboarding.pointSelected,
+              colorText: ColorOnboarding.whiteColor,
+            ),
+          ),
+          SizedBox(height: 2.h),
+          Text(
+            '© 2024 VINsweep. All Rights Reserved.',
+            style: GoogleFonts.openSans(
+              textStyle: TextStyle(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.normal,
+                color: ColorOnboarding.subTextColor,
+              ),
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    ),
+  );
 }
